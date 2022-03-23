@@ -1,0 +1,126 @@
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.1/papaparse.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+
+  <body style="margin: 0px;">
+    <div style="height: 50px; background: antiquewhite;">
+      <div style=" top: 20px; ; height: 50px;  background: rgba(130, 151, 13, 0);">
+        <h1 style="text-align:center; ">Welcome to our Real Filter Design World!</h1>
+      </div>
+      </div>
+      <div class="headerline"></div>
+
+
+    <main>
+      <div class="part1" style="position:absolute; top:60px; ">
+        <div class="part1left">
+          <div id="unitDiv" style="position:absolute; top: 10px; left: 70px;"></div>
+          <div class="buttons" style="position:absolute; top:450px;">
+            <p id="unitAValue" style="margin-left: 80px;">hello</p>
+            <div class="row1">
+              <button class="unitBtn" id="addPole">Add Pole</button>
+              <button class="unitBtn" id="addZero">Add Zero</button>
+            </div>
+            <div class="row2">
+              <button class="unitBtn" id="removeAllPole">Remove all Pole</button>
+              <button class="unitBtn" id="removeAllZero">Remove all Zero</button>
+            </div>
+            <div class="row3">
+              <button class="unitBtn" id="removePorZ">Remove</button>
+              <button class="unitBtn" id="removeAll">Remove All</button>
+            </div>
+            <div class="conjpart">
+              <input type="checkbox" id="conjCheckbox" value="1">
+              <label for="conjCheckbox"
+                style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ">Add
+                Conjugates</label><br>
+            </div>
+          </div>
+        </div>
+        <div class="mag-phase-graphs">
+          <canvas id="magChart" width="1100" height="400"></canvas>
+          <canvas id="phaseChart" width="1100" height="400"></canvas>
+        </div>
+      </div>
+      <!-- End of part1 -->
+      <div class="line1"></div>
+      <div class="part2" style="position:absolute; top:900px; ">
+        <div class="signalgraphs" style="position:absolute; top:30px;">
+          <div id="originalSignal" width="800" height="400"></div>
+          <div id="filteredSignal" width="800" height="400"></div>
+        </div>
+        <div class="slid">
+          <span id="rangeValue">10</span>
+          <Input id="slider" class="range" type="range" name ="" value="10" min="10" max="2000" onChange="rangeSlide(this.value)"
+            onmousemove="rangeSlide(this.value)"></Input>
+        </div>
+        <script type="text/javascript">
+          function rangeSlide(value) {
+            document.getElementById('rangeValue').innerHTML = value;
+          }
+        </script>
+        <div class="zft">
+          <button class="Import">Upload</button>
+        </div>
+        <div style="padding: 550px; padding-left: 750px; padding-top: 560px;">         
+           <input type="file" id="signalFile" accept=".csv">
+        </div>
+      </div>
+      <div class="line2"></div>
+    <div class="part3 " style="position:absolute; top:1100px; ">
+      <div class="allpassgraphdiv">
+        <canvas id="allpassgraph" width="1000" height="400"></canvas>
+      </div>
+      <div class="a">
+        <div style="font-size: 25px; left: 1000;">
+          <p> Design your All Pass Filter : </p>
+        </div>
+        <div>
+          <label style="font-size: 25px;">Real Part of a :</label>
+          <input id="RealPart" type="number" value="0">
+        </div>
+        <div>
+          <label style="font-size: 25px;">Imaginary Part of a :</label>
+          <input id="ImagPart" type="number" value="0">
+        </div>
+      </div>
+      <button class="AllPassBtn" id="addAllPass">Add</button>
+      <button class="AllPassBtn" id="removeAllPass">Remove</button>
+
+      <div class="AllPassLib" style="text-align: center;">
+        <p style="font-size: 25px;">Select your All Pass Filter</p>
+        <select  id="selectedFilterslib" style="width: 120px; height: 30px;">
+          <option disabled hidden selected>Select</option>
+          <option value="0"> None</option>
+          <option value="1"> Filter 1</option>
+          <option value="2"> Filter 2</option>
+          <option value="3"> Filter 3</option>
+          <option value="4"> Filter 4</option>
+          <option value="5"> Filter 5</option>
+          <option value="6"> Filter 6</option>
+        </select>
+       
+      </div>
+      <div class="AllPassSelected" style="text-align: center;">
+        <p style="font-size: 25px;"> Your All Pass Filters</p>
+        <select id="selectedFilters" style="width: 120px; height: 30px;">
+          <option disabled hidden selected>Select</option>
+          <option value="-1"> None</option>
+        </select>
+      </div>
+
+    </div>
+    <!-- End Of part 3 -->
+      </main>
+  
+    <script src="unitCircle.js"></script>
+    <script src="real time.js"></script>
+    <script src="all pass.js"></script>
+
+  </body>
+</html>
